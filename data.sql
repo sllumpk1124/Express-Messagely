@@ -13,9 +13,9 @@ CREATE TABLE users (
 
 CREATE TABLE messages (
     id SERIAL PRIMARY KEY,
-    from_username text NOT NULL REFERENCES users,
-    to_username text NOT NULL REFERENCES users,
-    body text NOT NULL,
-    sent_at timestamp with time zone NOT NULL,
-    read_at timestamp with time zone
+    from_username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+    to_username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+    body TEXT NOT NULL,
+    sent_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    read_at TIMESTAMP WITH TIME ZONE
 );
